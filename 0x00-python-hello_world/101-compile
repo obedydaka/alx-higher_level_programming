@@ -1,20 +1,6 @@
 #!/bin/bash
 
-pyfile = "$PYFILE"
-
-if [ ! -f "$pyfile" ]; then
-	echo "Error: Python file '$pyfile' does not exist."
-	exit 1
-fi
-
-output_file = "${pyfile}c"
-
-python -m py_compile "$pyfile"
-
-if [ $? -eq 0 ]; then
-	echo "Compilation successful. Saved to '$output_file'."
-	exit 0
-else
-	echo "compilation failed"
-	exit 1
-fi
+echo "Compiling $PYFILE ..."                                                    
+python3 -c "import py_compile
+output = \"$PYFILE\" + \"c\"
+py_compile.compile(\"$PYFILE\", output)" 
