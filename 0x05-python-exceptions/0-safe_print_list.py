@@ -2,13 +2,13 @@
 
 
 def safe_print_list(my_list=[], x=0):
-    try:
-        count = 0
-        for i in range(x):
-            print(my_list[i], end="")
-            count += 1
-        print()
-        return count
-    except IndexError as e:
-        print("Error: Index out of range -", e)
-        return count
+
+    to_print = 0
+    for i in range(x):
+        try:
+            print("{:d}".format(my_list[i]), end="")
+            to_print += 1
+        except:
+            continue
+    print()
+    return to_print
